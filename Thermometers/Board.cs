@@ -18,19 +18,17 @@ namespace Thermometers
         private int[] stats = new int[9];
         private Rectangle[] rect = new Rectangle[9];
         private Random rnd = new Random();
-        private BitmapImage[] bmi = new BitmapImage[3];
         private Canvas myCanvas;
         private Label myLabel;
+        private ImageManager imageManager;
 
-        public Board(int colCount, int rowCount, int cellSize, float marginPerc, Canvas myCanvas, Label myLabel, int dest)
+        public Board(int colCount, int rowCount, int cellSize, float marginPerc, Canvas myCanvas, Label myLabel, int dest, ImageManager imageManager)
         {
-            bmi[0] = new BitmapImage(new Uri("file:///e:\\Projects\\Thermometers\\smile1.png", UriKind.Absolute));
-            bmi[1] = new BitmapImage(new Uri("file:///e:\\Projects\\Thermometers\\smile2.png", UriKind.Absolute));
-            bmi[2] = new BitmapImage(new Uri("file:///e:\\Projects\\Thermometers\\smile3.png", UriKind.Absolute));
             this.myCanvas = myCanvas;
             this.myLabel = myLabel;
             this.dest = dest;
             this.cellSize = cellSize;
+            this.imageManager = imageManager;
             for (int col = 0; col < colCount; col++)
                 for (int row = 0; row < rowCount; row++)
                 {
@@ -64,9 +62,7 @@ namespace Thermometers
         void redrawCell(int col, int row)
         {
             int pos = row * 3 + col;
-            ImageBrush ib = new ImageBrush();
-            ib.ImageSource = bmi[stats[pos]];
-            rect[pos].Fill = ib;
+            rect[pos].Fill = imageManager.getImageBrushes()[stats[pos]];
         }
 
 
@@ -84,15 +80,8 @@ namespace Thermometers
         {
             for (int i = 0; i < 9; i++)
             {
-                ImageBrush ib = new ImageBrush();
-                ib.ImageSource = bmi[stats[i]];
-                rect[i].Fill = ib;
+                rect[i].Fill = imageManager.getImageBrushes()[stats[i]]; ;
             }
-        }
-
-        public BitmapImage[] getBitmapImages()
-        {
-            return bmi;
         }
     }
 
