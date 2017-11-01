@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Canvas Name="myCanvas">
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="77" Stroke="Black" VerticalAlignment="Top" Width="113" Name="rect1" Canvas.Left="349" Canvas.Top="68"/>
         <Label x:Name="label" Content="Label" Canvas.Left="434" Canvas.Top="190"/>
 
     </Canvas>

@@ -13,7 +13,7 @@ namespace Thermometers
 {
     class Board
     {
-        private int DEFAULT_CELL_SIZE = 100;
+        private int cellSize;
         private int dest;
         private int[] stats = new int[9];
         private Rectangle[] rect = new Rectangle[9];
@@ -30,6 +30,7 @@ namespace Thermometers
             this.myCanvas = myCanvas;
             this.myLabel = myLabel;
             this.dest = dest;
+            this.cellSize = cellSize;
             for (int col = 0; col < colCount; col++)
                 for (int row = 0; row < rowCount; row++)
                 {
@@ -48,8 +49,8 @@ namespace Thermometers
         }
         void boardHandler(object sender, MouseButtonEventArgs e)
         {
-            int x = Convert.ToInt32(Math.Floor(e.GetPosition(myCanvas).X / DEFAULT_CELL_SIZE));
-            int y = Convert.ToInt32(Math.Floor(e.GetPosition(myCanvas).Y / DEFAULT_CELL_SIZE));
+            int x = Convert.ToInt32(Math.Floor(e.GetPosition(myCanvas).X / cellSize));
+            int y = Convert.ToInt32(Math.Floor(e.GetPosition(myCanvas).Y / cellSize));
             stats[y * 3 + x]++;
             stats[y * 3 + x] %= 3;
             redrawCell(x, y);
