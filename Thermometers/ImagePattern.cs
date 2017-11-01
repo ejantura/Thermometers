@@ -11,8 +11,10 @@ namespace Thermometers
 {
     class ImagePattern
     {
-        public ImagePattern(int imageSize, Canvas myCanvas, ImageBrush imageBrush)
+        private int dest;
+        public ImagePattern(int imageSize, Canvas myCanvas, ImageManager imageManager)
         {
+            dest = new Random().Next(0, 2);
             Rectangle rectanglePattern = new Rectangle();
             rectanglePattern.Width = imageSize;
             rectanglePattern.Height = imageSize;
@@ -21,7 +23,12 @@ namespace Thermometers
             myCanvas.Children.Add(rectanglePattern);
             Canvas.SetTop(rectanglePattern, 200);
             Canvas.SetLeft(rectanglePattern, 350);
-            rectanglePattern.Fill = imageBrush;
+            rectanglePattern.Fill = imageManager.getImageBrushes()[dest];
+        }
+
+        public int getDest()
+        {
+            return dest;
         }
     }
 }

@@ -21,19 +21,16 @@ namespace Thermometers
     public partial class MainWindow : Window
     {
         private int DEFAULT_CELL_SIZE = 100;
-        private int dest;
-        
+                
         public MainWindow()
         {
             InitializeComponent();
-            dest = new Random().Next(0, 2);
 
-            Board myBoard = new Board(3, 3, DEFAULT_CELL_SIZE, 1.0f, myCanvas, label, dest);
+            ImageManager imageManager = new ImageManager();
+            ImagePattern imagePattern = new ImagePattern(DEFAULT_CELL_SIZE, myCanvas, imageManager);
+
+            Board myBoard = new Board(3, 3, DEFAULT_CELL_SIZE, 1.0f, myCanvas, label, imagePattern.getDest(), imageManager);
             myBoard.redraw();
-
-            ImageBrush imageBrush = new ImageBrush();
-            imageBrush.ImageSource = myBoard.getBitmapImages()[dest];
-            ImagePattern imagePattern = new ImagePattern(DEFAULT_CELL_SIZE, myCanvas, imageBrush);
-        }
+          }
     }
 }
