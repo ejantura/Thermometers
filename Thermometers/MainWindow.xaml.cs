@@ -21,7 +21,7 @@ namespace Thermometers
     public partial class MainWindow : Window
     {
         private int DEFAULT_CELL_SIZE = 100;
-                
+                 
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +29,14 @@ namespace Thermometers
             ImageManager imageManager = new ImageManager();
             ImagePattern imagePattern = new ImagePattern(DEFAULT_CELL_SIZE, myCanvas, imageManager);
 
-            Board myBoard = new Board(3, 3, DEFAULT_CELL_SIZE, 1.0f, myCanvas, label, imagePattern.getDest(), imageManager);
+            BoardConfig boardConfig = new BoardConfig();
+            boardConfig.CellSize = DEFAULT_CELL_SIZE;
+            boardConfig.ColCount = 3;
+            boardConfig.RowCount = 3;
+            boardConfig.MarginPerc = 1.0f;
+            boardConfig.Dest = imagePattern.getDest();
+
+            Board myBoard = new Board(boardConfig, myCanvas, label, imageManager);
             myBoard.redraw();
           }
     }

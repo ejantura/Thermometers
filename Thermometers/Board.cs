@@ -15,6 +15,9 @@ namespace Thermometers
     {
         private int cellSize;
         private int dest;
+        private int rowCount;
+        private int colCount;
+        private float marginPerc;
         private int[] stats = new int[9];
         private Rectangle[] rect = new Rectangle[9];
         private Random rnd = new Random();
@@ -22,12 +25,15 @@ namespace Thermometers
         private Label myLabel;
         private ImageManager imageManager;
 
-        public Board(int colCount, int rowCount, int cellSize, float marginPerc, Canvas myCanvas, Label myLabel, int dest, ImageManager imageManager)
+        public Board(BoardConfig boardConfig, Canvas myCanvas, Label myLabel, ImageManager imageManager)
         {
             this.myCanvas = myCanvas;
             this.myLabel = myLabel;
-            this.dest = dest;
-            this.cellSize = cellSize;
+            this.dest = boardConfig.Dest;
+            this.cellSize = boardConfig.CellSize;
+            this.rowCount = boardConfig.RowCount;
+            this.colCount = boardConfig.ColCount;
+            this.marginPerc = boardConfig.MarginPerc;
             this.imageManager = imageManager;
             for (int col = 0; col < colCount; col++)
                 for (int row = 0; row < rowCount; row++)

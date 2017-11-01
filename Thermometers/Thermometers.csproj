@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Board.cs" />
+    <Compile Include="BoardConfig.cs" />
     <Compile Include="ImageManager.cs" />
     <Compile Include="ImagePattern.cs" />
     <Compile Include="MainWindow.xaml.cs">
